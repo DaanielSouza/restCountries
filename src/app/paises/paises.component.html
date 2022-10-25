@@ -1,3 +1,5 @@
-<div *ngFor="let p of arrayResult">
-  <div> {{ p.continents[0] }} </div>
+<div class="containerPai">
+  <div *ngFor="let p of arrayResult" class="containerFilho {{p.region}}">
+    <img class="bandeiras" src="{{p.flags.png}}" alt="Bandeira PNG">
+  </div>
 </div>

@@ -19,8 +19,9 @@ export class PaisesComponent implements OnInit {
   ngOnInit(): void {
     this.result.then(r => r.json()).then(paises => paises.forEach((p: any) => {
       this.arrayResult.push(p);
+      console.log(p);
     }));
-    console.log(this.arrayResult);
+
   }
 
 }
