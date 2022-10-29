@@ -7,21 +7,23 @@ import { Component, OnInit, Output } from '@angular/core';
 })
 export class PaisesComponent implements OnInit {
 
+  //ARRAY PARA ARMAZENAR OS FUTUROS DADOS
   arrayResult: any[] = [];
-  requestOptions: any = {
-    method: 'GET',
-    redirect: 'follow'
-  };
-
-  result = fetch("https://restcountries.com/v3.1/all", this.requestOptions);
 
   constructor() { }
-  ngOnInit(): void {
-    this.result.then(r => r.json()).then(paises => paises.forEach((p: any) => {
-      this.arrayResult.push(p);
-      console.log(p);
-    }));
 
+  //FUNCAO QUE SERÁ CAHAMADA AO INICIAR A CLASSE
+  ngOnInit(): void {
+    fetch("https://restcountries.com/v3.1/all")
+      .then(r => r.json()) //TRANSFORMA O RETORNO EM JSON
+      .then(
+        paises => //EXECUTA UMA VEZ PARA CADA OBJETO QUE EXISTIR DENTRO DO JSON
+          paises.forEach(
+            (p: any) => {
+              this.arrayResult.push(p);//INCLUINDO O OBJETO NO ARRAY CRIADO NO INÍCIO
+            }
+          )
+      );
   }
 
 }

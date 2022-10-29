@@ -1,5 +1,11 @@
-<div class="containerPai">
-  <div *ngFor="let p of arrayResult" class="containerFilho {{p.region}}">
-    <img class="bandeiras" src="{{p.flags.png}}" alt="Bandeira PNG">
+<div *ngFor="let p of arrayResult" class="card {{p.region}}">
+  <div class="card__content">
+    <img class="card__image" src="{{p.flags.png}}">
+    <div class="card__data">
+      <p>Nome: {{ p.name.common }}</p><br>
+      <p>Native name: {{ p.name.nativeName[0] }}</p> <br>
+      <p>Região: {{ p.region }}</p><br>
+      <p>Sub-região: {{ p.subregion }}</p>
+    </div>
   </div>
 </div>
