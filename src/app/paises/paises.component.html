@@ -1,9 +1,9 @@
 <div *ngFor="let p of arrayResult" class="card {{p.region}}">
   <div class="card__content">
-    <img class="card__image" src="{{p.flags.png}}">
+    <img class="card__image" src="{{p.flag}}">
     <div class="card__data">
-      <p>Nome: {{ p.name.common }}</p><br>
-      <p>Native name: {{ p.name.nativeName[0] }}</p> <br>
+      <p>Nome: {{ p.name }}</p><br>
+      <p>Native name: {{ p.nativeName }}</p> <br>
       <p>Região: {{ p.region }}</p><br>
       <p>Sub-região: {{ p.subregion }}</p>
     </div>

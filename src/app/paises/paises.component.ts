@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { Pais } from "../shared/Pais.model";
 
 @Component({
   selector: 'app-paises',
@@ -8,19 +9,20 @@ import { Component, OnInit, Output } from '@angular/core';
 export class PaisesComponent implements OnInit {
 
   //ARRAY PARA ARMAZENAR OS FUTUROS DADOS
-  arrayResult: any[] = [];
+  arrayResult: Pais[] = [];
 
   constructor() { }
 
   //FUNCAO QUE SERÁ CAHAMADA AO INICIAR A CLASSE
   ngOnInit(): void {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch("https://restcountries.com/v2/all")
       .then(r => r.json()) //TRANSFORMA O RETORNO EM JSON
       .then(
         paises => //EXECUTA UMA VEZ PARA CADA OBJETO QUE EXISTIR DENTRO DO JSON
           paises.forEach(
             (p: any) => {
-              this.arrayResult.push(p);//INCLUINDO O OBJETO NO ARRAY CRIADO NO INÍCIO
+              this.arrayResult.push(new Pais(p));//INCLUINDO O OBJETO NO ARRAY CRIADO NO INÍCIO
+              this.arrayResult.sort();
             }
           )
       );
